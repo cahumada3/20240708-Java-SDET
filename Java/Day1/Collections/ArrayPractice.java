@@ -38,6 +38,7 @@ public class ArrayPractice {
          *      -> do-while
          *      -> for
          *      -> for-each
+         *      -> iterators (not really a loop)
          * 
          * 
          * 
