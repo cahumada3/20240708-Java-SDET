@@ -22,5 +22,33 @@ public class Factory {
      *      In code: we want HIGH COHESION and LOW COUPLING 
      * 
      */
-    
+
+    public static void main(String[] args) {
+
+        Superhero hero = SuperheroFactory.createSuperhero("Captain America");
+        hero.activateSuperpower();
+        hero.sayName();
+
+
+        Superhero hero2 = SuperheroFactory.createSuperhero("Batman");
+        hero2.activateSuperpower();
+        hero2.sayName();
+    } 
+
+}
+
+class SuperheroFactory {
+    public static Superhero createSuperhero(String type) {
+        if(type.equals("Captain America")) {
+            return new CaptainAmerica();
+        } else if(type.equals("SuperMan")) {
+            return new SuperMan();
+        } else if(type.equals("Black Panther")) {
+            return new BlackPanther();
+        } else if(type.equals("Batman")) {
+            return new Batman();
+        } else {
+            throw new IllegalArgumentException("Invalid Superhero " + type);
+        }
+    }
 }
