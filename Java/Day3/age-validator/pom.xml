@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!--
+    POM - Project Object Model
+          - represent your entire project for maven
+          - maven uses the inof in your POM to decide how to build your projects
+  -->
+
+  <!--
+      BUILD LIFECYCLE
+
+      1. validate
+          ensure that your project has all the necessary components
+          ex: validate will fail if your project coordinates are missing
+
+      2. compile
+          compile our source code
+          fails if code has errors
+
+      3. test
+          runs all of your unit tests
+          fails if tests don't pass
+
+      4. package
+          packages compiles code into a JAR or WAR - depending what you specify
+
+      5. verify
+          runs all your integration tests
+          all the pieces are working together
+
+      6. install
+          install the created package to your local repository (.m2)
+          once installed, it can be used in other maven projects
+
+      7. deploy
+          puts created package on maven central
+  -->
+
+  <!-- PROJECT COORDINATES -->
+  <groupId>com.skillstorm</groupId> <!-- project domain, usually a business name of some sort-->
+  <artifactId>age-validator</artifactId>  <!-- project name - no caps or spaces-->
+  <version>1.0.0</version>              <!-- major.minor.patch-->
+
+  <name>age-validator</name>
+
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source> 
+    <maven.compiler.target>1.8</maven.compiler.target>
+
+   <!-- <junit.version>4.12</junit.version>     you can declare your own properties --> 
+  </properties>
+
+ <!--
+    DEPENDENCY MANAGEMENT
+      dependencies - third party libraries that your project is using 
+
+      https://mvnrepository.com/
+
+      external repository with ALL dependencies in the world - Maven Central Repository
+      .m2 folder is your local copy of maven central
+
+      when maven builds your project, it checks for dependencies
+        it will first search in the .m2 folder for those
+        if it can't find it in .m2, it downloads from maven central      
+ -->
+
+
+  <dependencies>
+    <!-- JUNIT 4-->
+    <dependency>
+      <!-- coordinates for dependency -->
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+
+      <!--
+        scope: compile (default), test (won't include in deployments), runtime (won't use it while compiling your projects,
+                                                                               just lets you access that dependency while its running) 
+      -->
+
+    </dependency>
+  </dependencies>
+  
+  <!-- remove all the plugins -->
+
+</project>
