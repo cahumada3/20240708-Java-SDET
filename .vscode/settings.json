@@ -1,4 +1,16 @@
 {
     "eslint.enable": true,
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "Postgres Local",
+            "database": "chinook",
+            "username": "postgres",
+            "password": "ahu.21"
+        }
+    ]
 }
