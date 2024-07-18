@@ -2,14 +2,19 @@ package com.skillstorm.demo.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "directors")
 public class Director {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +27,7 @@ public class Director {
     private String lastName;
 
     @OneToMany(mappedBy = "director", targetEntity = Movie.class) // targetEntity is optional because Spring Data implies this from field list type
+    @JsonManagedReference
     List<Movie> movies;
  
     public Director(){}

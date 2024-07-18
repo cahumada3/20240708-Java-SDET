@@ -15,11 +15,11 @@ public class SpringDataJpaDemoApplication {
 		SpringApplication.run(SpringDataJpaDemoApplication.class, args);
 	}
 
-	@Bean
-	CommandLineRunner commandLineRunner(MovieRepository repo) {
-		return (args) -> {
-			System.out.println(repo.findById(1));
-		};
-	}
+	// @Bean
+	// CommandLineRunner commandLineRunner(MovieRepository repo) {
+	// 	return (args) -> {
+	// 		System.out.println(repo.findById(1)); // this causes an issue due to LazyInitialization
+	// 	}; 
+	// }
 
 }
