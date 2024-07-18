@@ -6,4 +6,5 @@ import com.skillstorm.demo.models.Director;
 
 public interface DirectorRepository extends JpaRepository<Director, Integer> {
 
+    
 }

@@ -1,6 +1,7 @@
 package com.skillstorm.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,7 +33,7 @@ public class Movie {
     // Could not write JSON: Document nesting depth (1001) exceeds the maximum allowed (1000, from `StreamWriteConstraints.getMaxNestingDepth()`)]
     @ManyToOne
     @JoinColumn(name = "director_id")
-    @JsonBackReference                   // prevent circular reference one of three ways: (jsonignore, jsonmanagemedreferenece, jsonproperty always as id)
+    @JsonManagedReference                   // prevent circular reference one of three ways: (jsonignore, jsonmanagemedreferenece, jsonproperty always as id)
     private Director director;
 
     // do not do 
@@ -72,7 +73,7 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie [id=" + id + ", movieTitle=" + movieTitle + ", rating=" + rating + ", director=" + director + "]";
+        return "Movie [id=" + id + ", movieTitle=" + movieTitle + ", rating=" + rating + "]";
     }
 
     // don't add the foreign id column

@@ -2,6 +2,7 @@ package com.skillstorm.demo.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -27,7 +28,7 @@ public class Director {
     private String lastName;
 
     @OneToMany(mappedBy = "director", targetEntity = Movie.class) // targetEntity is optional because Spring Data implies this from field list type
-    @JsonManagedReference
+    @JsonBackReference       // Normally the OneToMany should have JsonBackReference so we don't bother serializing the list
     List<Movie> movies;
  
     public Director(){}
