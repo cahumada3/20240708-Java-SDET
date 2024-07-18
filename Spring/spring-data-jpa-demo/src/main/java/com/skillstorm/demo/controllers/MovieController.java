@@ -1,4 +1,4 @@
-package com.skillstorm.spring_data_jpa_demo.controllers;
+package com.skillstorm.demo.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skillstorm.spring_data_jpa_demo.models.Movie;
-import com.skillstorm.spring_data_jpa_demo.repositories.MovieRepository;
+import com.skillstorm.demo.models.Movie;
+import com.skillstorm.demo.repositories.MovieRepository;
 
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;

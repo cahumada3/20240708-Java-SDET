@@ -1,10 +1,12 @@
-package com.skillstorm.spring_data_jpa_demo.models;
+package com.skillstorm.demo.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -23,6 +25,14 @@ public class Movie {
     @Min(value = 0)
     @Max(value = 10)
     private int rating;
+
+    // TODO3 Many-to-one mapping
+    @ManyToOne
+    @JoinColumn(name = "director_id")
+    Director director;
+
+    // do not do 
+    // private int directorId;
 
     public int getId() {
         return id;
@@ -46,6 +56,19 @@ public class Movie {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public Director getDirector() {
+        return director;
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie [id=" + id + ", movieTitle=" + movieTitle + ", rating=" + rating + ", director=" + director + "]";
     }
 
     // don't add the foreign id column
