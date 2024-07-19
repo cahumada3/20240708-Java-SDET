@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.skillstorm.demo.models.Director;
+import com.skillstorm.demo.models.Movie;
 
 
 @Component         // TODO tell Spring that this is a bean
@@ -60,6 +61,13 @@ public class LoggingAspect {
 
 
      */
+    @Pointcut("execution(public * save(com.skillstorm.demo.models.*)) && args(movieToBeSaved)")
+    public void movieSave(Movie movieToBeSaved) { }
+    /*
+    wildcards: 
+        *          is matching 1 and exactly one
+        ..         is matching 0 or more
+     */
 
     /*
     * Types of Advice
@@ -78,16 +86,26 @@ public class LoggingAspect {
             Arrays.toString(joinPoint.getArgs()));
     }
 
-    // AfterReturning
-    public void response() {
-        
+    @Before("within(com.skillstorm.demo.models)")
+    public void everyMethodInModels( ) { }
+
+    @AfterReturning(value = "checkMovie()", returning = "returnedData")
+    public void response(JoinPoint joinPoint, Object returnedData) {
+        logger.debug("A response was sent from {} with the returned data: {}",
+            joinPoint.getSignature().getName(),
+            returnedData.toString()
+        );
     }
 
     // AfterThrowing we are using the RestControllerAdvice to handle
     // see file com.skillstorm.controllers.GlobalExceptionHandler.java
 
+
+
+
     // Around
-    public Director preventPostDoingUpdate() { // 
+    @Around("movieSave(movieToBeSaved)")
+    public Movie preventPostDoingSomething(ProceedingJoinPoint proceedingJoinPoint, Movie movieToBeSaved) { // 
         /*
          * PROCEEDING JOIN POINT
          *      join point that has an extra method: .proceed()
@@ -96,7 +114,22 @@ public class LoggingAspect {
          *      with a proceeding join point, it WILL NOT execute that method, until you call .proceed()
          * 
          */
-        return null;
+        logger.debug("MOVIE: {}", movieToBeSaved );
+        Movie savedMovie = null;
+        // adding some logic and preventing the .proceed() if theh condition fails
+        if (Character.isUpperCase(movieToBeSaved.getMovieTitle().charAt(0))) {
+            try {
+                savedMovie = (Movie) proceedingJoinPoint.proceed();
+            } catch (Throwable e) {
+                logger.debug("Method could not be executed because {} ", e.getMessage());
+            }
+            // Method is done running we can do something now
+            logger.debug("DONE");
+        } else {
+            // not doing anything just returning null
+            logger.debug("NOT SAVING BECAUSE TITLE ISN'T CAPITALIZEDD");
+        }
+        return savedMovie;
     }
     
 }
