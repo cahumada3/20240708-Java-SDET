@@ -4,11 +4,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import com.skillstorm.demo.models.Director;
 import com.skillstorm.demo.repositories.MovieRepository;
 
 @SpringBootApplication
+@EnableAspectJAutoProxy // Enable AspectJ to run Advice
 public class SpringDataJpaDemoApplication {
 
 	public static void main(String[] args) {
