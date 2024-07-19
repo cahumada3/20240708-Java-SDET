@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.skillstorm.demo.models.Movie;
 import com.skillstorm.demo.services.MovieService;
 
+import jakarta.validation.Valid;
+
 
 
 @RestController
@@ -58,7 +60,7 @@ public class MovieController {
 
     @PostMapping()// POST http://localhost:8080/movies
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Movie create(@RequestBody Movie movie) {
+    public Movie create(@Valid @RequestBody Movie movie) {
         logger.debug("====================================");
         logger.debug("POST request to /movies with Movie of " + movie);
         return service.save(movie);

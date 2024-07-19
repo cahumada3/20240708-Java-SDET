@@ -17,6 +17,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "movies") // optional annotation if name of db table matches class name
@@ -64,6 +65,7 @@ public class Movie {
     */
     @ManyToOne
     @Cascade(CascadeType.PERSIST)
+    @NotNull
     @JoinColumn(name = "director_id")
     @JsonIdentityReference(alwaysAsId= true)
     private Director director;
