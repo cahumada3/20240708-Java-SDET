@@ -36,11 +36,11 @@ public class LoggingAspect {
 
     /*
      * ASPECTS 
-     *      Join Points -  
+     *      Join Points - expressiosn that specify when during the execution of the progam advice should be run
      * 
-     *      Point Cut - 
+     *      Point Cut - the method invocation or when an exception is thrown during execution
      * 
-     *      Advice - 
+     *      Advice - code to run along with our code at certain points during execution of the program
      */
 
     /*
@@ -50,7 +50,7 @@ public class LoggingAspect {
      *      bean() - for a specific bean
      */
     // TODO
-    @Pointcut("")   // any method in the MovieController class is now a pointcut
+    @Pointcut("within(com.skillstorm.demo.controllers.MovieController)")   // any method in the MovieController class 
     public void checkMovie() {
         /* leave empty - the code inside wont ever run */
     }
@@ -71,8 +71,11 @@ public class LoggingAspect {
     */
 
     // Before
-    public void request() {
-
+    @Before("checkMovie()") // this method gets run before every method in MoviesController
+    public void request(JoinPoint joinPoint) {
+        logger.debug("A request was made to {} with the arguments: {}", 
+            joinPoint.getSignature(), 
+            Arrays.toString(joinPoint.getArgs()));
     }
 
     // AfterReturning
