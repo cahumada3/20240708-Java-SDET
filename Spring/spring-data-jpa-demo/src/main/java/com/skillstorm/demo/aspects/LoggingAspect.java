@@ -16,8 +16,8 @@ import org.springframework.stereotype.Component;
 import com.skillstorm.demo.models.Director;
 
 
-         // tell Spring that this is a bean
-         // tells AspectJ that this is an aspect 
+@Component         // TODO tell Spring that this is a bean
+@Aspect            // TODO tells AspectJ that this is an aspect 
 public class LoggingAspect {
 
     /*
@@ -31,6 +31,7 @@ public class LoggingAspect {
      */
 
      // TODO Create Logger using LoggerFactory
+     Logger logger = LoggerFactory.getLogger(getClass());
     
 
     /*
