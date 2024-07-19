@@ -3,8 +3,11 @@ package com.skillstorm.demo.models;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.skillJsonIdentityReferencestorm.demo.models.Movie;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,6 +19,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "directors")
+// @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Director {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,8 +31,22 @@ public class Director {
     @Column(length=50)
     private String lastName;
 
+    /*
+    Circular Reference Solutions:
+
+    1. @JsonIgnore List<Movie> movies; in Director class
+      - one side of the relationship so it is not seralized
+
+    2. @JsonManagedReference
+       @JsonBackReference
+
+    3. @JsonIdentityReference(alwaysAsId = true) Director director; in Movies class
+       @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id") class Director { ... }
+
+
+     */
     @OneToMany(mappedBy = "director", targetEntity = Movie.class) // targetEntity is optional because Spring Data implies this from field list type
-    @JsonBackReference       // Normally the OneToMany should have JsonBackReference so we don't bother serializing the list
+    @JsonBackReference
     List<Movie> movies;
  
     public Director(){}

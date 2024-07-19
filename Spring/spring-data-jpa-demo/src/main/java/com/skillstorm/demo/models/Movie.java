@@ -1,6 +1,7 @@
 package com.skillstorm.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
@@ -29,11 +30,26 @@ public class Movie {
     @Max(value = 10)
     private int rating;
 
-    // TODO3 Many-to-one mapping
-    // Could not write JSON: Document nesting depth (1001) exceeds the maximum allowed (1000, from `StreamWriteConstraints.getMaxNestingDepth()`)]
+    /* 
+    // @Many-to-one mapping
+    Circular reference:
+    
+    Could not write JSON: Document nesting depth (1001) exceeds the maximum allowed (1000, from `StreamWriteConstraints.getMaxNestingDepth()`)]
+
+    Solution:
+
+    Mark the list @JsonIgnore
+    or
+    Mark the list @JsonBackReference
+    or
+    Mark the Direcgtor class as having a customized way for Jackson to seralize it and add
+     @JsonIdentityReference(alwaysAsId = true)                 
+
+
+    */
     @ManyToOne
     @JoinColumn(name = "director_id")
-    @JsonManagedReference                   // prevent circular reference one of three ways: (jsonignore, jsonmanagemedreferenece, jsonproperty always as id)
+    @JsonManagedReference  
     private Director director;
 
     // do not do 
