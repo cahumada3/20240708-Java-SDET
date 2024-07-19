@@ -1,5 +1,8 @@
 package com.skillstorm.demo.models;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -18,6 +21,18 @@ import jakarta.validation.constraints.Min;
 @Entity
 @Table(name = "movies") // optional annotation if name of db table matches class name
 public class Movie {
+
+    /*
+     Validation checks:
+
+     Depenedency for Validation we added give us the ability to use built-in validators instead of writing our own
+
+     @Min  - only for numeric types
+     @Max - only for numeric types
+     @NotNull
+     @NotBlank - only for strings
+
+     */
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // strategies: IDENTITY or AUTO 
@@ -48,8 +63,9 @@ public class Movie {
 
     */
     @ManyToOne
+    @Cascade(CascadeType.PERSIST)
     @JoinColumn(name = "director_id")
-    @JsonManagedReference  
+    @JsonIdentityReference(alwaysAsId= true)
     private Director director;
 
     // do not do 
@@ -89,7 +105,7 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie [id=" + id + ", movieTitle=" + movieTitle + ", rating=" + rating + "]";
+        return "Movie [id=" + id + ", movieTitle=" + movieTitle + ", rating=" + rating + ", director " + (director == null ? null : director.getFirstName()) + " " + (director == null ? null : director.getLastName()) + "]";
     }
 
     // don't add the foreign id column
