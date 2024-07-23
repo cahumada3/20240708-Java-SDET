@@ -1,0 +1,52 @@
+<!DOCTYPE html>                     <!-- DOCTYPE helps your browser parse the file -->
+<html lang="en">
+<head>
+    <!-- All the meta dat should be in the head tag -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>    <!-- Displayed as the tab name -->
+    <style>
+        /* This is not best practice */
+        body {
+            font-size: 24px;
+        }
+        :root {
+            margin: 0px;
+            padding: 0px;
+        }
+        #yaya {
+            text-decoration: line-through;
+        }
+    </style>
+    <!-- To add external css styles use: -->
+     <link href="styles.css" rel="stylesheet"/>
+    <script>
+        // This is not best practice
+        console.log("hello from within html page")
+    </script>
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <!-- All the visible content should be in the body tag -->
+     <h1>Hello World!</h1>              <!-- heading tag -->
+     <h2>Hello. Hello. Hello.</h2>      <!-- 6 heading levels -->
+     <p id="awesomeness">Why today is awesome:</p>
+     <p id="yaya">Everyone gets to take the Java Cert and put it behind them!</p>
+     <hr>                               <!-- Some tags are self closing, they don't have content so they don't need a closing tag -->
+     <br>
+     <br/>
+     <br />
+     More text
+     <!-- div and span are generic tags -->
+     <div class="purple" style="border: 1px black solid; width: 100px; height: 100px; background-color: lavender;">
+        I am a block element!
+     </div>
+     <span class="purple" style="border: 1px black solid;">This is an inline element!</span> It does not take the full width.
+     <!-- HTML 5 added semantic tags 
+        - semantic tags give more meaning to the divisions of your page
+        - header, footer, main, aside, nav, 
+     -->
+     <footer class="purple" style="position: absolute; bottom: 0px;">&copy; SkillStorm SDET, 2024</footer>
+     <p>More content here</p>
+</body>
+</html>
