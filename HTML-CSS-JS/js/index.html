@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML-CSS-JS Day 2</title>
+
+
+    <!-- Adding external CSS-->
+    <link href="styles/styles.css" rel="stylesheet" />
+
+    <!-- Adding external scripts -->
+    <script src="scripts/01-dom.-manipulation.js" defer >
+    console.log("does this work?")
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log("when does this print?")
+        })
+    </script>
+    <script>
+        console.log("this works")
+    </script>
+</head>
+<body>
+    <h1>DOM Manipulation</h1>
+    <p>Open your dev tools to see the console with any print logs. (Use F12 or Right click and select <strong>Inspect Page</strong>)</p>
+    <div id="1" class="box red">Div1</div>
+    <div class="box blue">Div2</div>
+    <div class="box green round">Div3</div>
+</body>
+</html>

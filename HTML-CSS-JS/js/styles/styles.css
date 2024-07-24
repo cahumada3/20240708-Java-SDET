@@ -1,0 +1,20 @@
+.box {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    padding: 5px 10px 15px 20px; /* top - right - bottom - left */
+    margin: 10px 20px; /* top-bottom and left-right */
+}
+
+.red {
+    background-color: rgb(255, 146, 146); /* rgb FFF is white and 000 is black */
+}
+
+.blue {
+    background-color: rgb(138, 201, 235);
+}
+
+.green {
+    background-color: rgb(190, 243, 190);
+
+}
