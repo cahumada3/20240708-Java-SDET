@@ -61,7 +61,7 @@ public class LoggingAspect {
 
 
      */
-    @Pointcut("execution(public * save(com.skillstorm.demo.models.*)) && args(movieToBeSaved)")
+    @Pointcut("execution(public * save(com.skillstorm.demo.services.*)) && args(movieToBeSaved)")
     public void movieSave(Movie movieToBeSaved) { }
     /*
     wildcards: 
