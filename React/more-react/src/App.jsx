@@ -1,6 +1,8 @@
 import './App.css'
 import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
-import { Cat, Dog, Home, Error } from './pages' // note I don't need to specify index.js because index is the default file it looks for
+import { Cat, Dog, Home } from './pages' // note I don't need to specify index.js because index is the default file it looks for
+import SeeEffects from './pages/SeeEffects/SeeEffects'
+import { useState } from 'react'
 
 // instead of importing these pages individually
 // use BARREL IMPORTS
@@ -9,30 +11,16 @@ import { Cat, Dog, Home, Error } from './pages' // note I don't need to specify 
 
 function App() {
 
+  
+  const [shouldRender, setShouldRender] = useState(true);
+
   return (
     <>
-    <header>My Awesome React App</header>
-    {/* <nav>
-      <Link to="/home">Home</Link>
-      <Link to="/cat">Cat</Link>
-      <Link to="/dog">Dog</Link>
-    </nav> */}
+    <header><h3>My Awesome React App</h3></header>
+
     <main>
-  <BrowserRouter>
-    <Routes>
-      <Route path='/cat' element={<Cat /> }/>
-      <Route path='/dog' element={<Dog /> }/>
-      <Route path='/' element={<Home /> }/>
-      {/** For any other path that is not defined 
-              option 1: display a 404 not found page
-              
-              option 2: redirect to home page
-       */}
-       {/* <Route path='*' element={<Error />} /> */}
-       <Route path='*' element={<Navigate to='/' />} />
-      <Route />
-    </Routes>
-  </BrowserRouter>
+    {shouldRender ? <SeeEffects /> : null}
+    <button onClick={() => setShouldRender(!shouldRender)}>Toggle</button>
   </main>
     </>
   )

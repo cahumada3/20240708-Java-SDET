@@ -30,6 +30,7 @@ body {
 
 main {
   display: flex;
+  flex-direction: column;
   place-items: center;
 }
 

@@ -1,8 +1,21 @@
-# React + Vite
+# More React Examples
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. routing in react using the react-router-dom dependency
+   - create a 
+   - create a router
+   - create some routes
 
-Currently, two official plugins are available:
+   - create some links
+     - inside the browsermodu
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. useEffect
+
+TODO
+
+- useRef
+- useContext
+
+- fetch
+  - findAll
+  - save
+  - use MUI components to display data
