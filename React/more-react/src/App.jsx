@@ -11,6 +11,13 @@ function App() {
 
   return (
     <>
+    <header>My Awesome React App</header>
+    {/* <nav>
+      <Link to="/home">Home</Link>
+      <Link to="/cat">Cat</Link>
+      <Link to="/dog">Dog</Link>
+    </nav> */}
+    <main>
   <BrowserRouter>
     <Routes>
       <Route path='/cat' element={<Cat /> }/>
@@ -26,6 +33,7 @@ function App() {
       <Route />
     </Routes>
   </BrowserRouter>
+  </main>
     </>
   )
 }
