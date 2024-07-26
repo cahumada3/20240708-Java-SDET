@@ -24,10 +24,77 @@
 </head>
 <body>
     <h1>DOM Manipulation</h1>
+    
+    <nav>
+        <a href="./pages/cats.html" >View Cats</a><a href="../pages/dogs.html">View Dogs</a> | <a href="#" style="font-weight: bold; background-color: aquamarine; border: 1px solid black; border-radius: 5px;">Home</a>
+    </nav>
     <p>Open your dev tools to see the console with any print logs. (Use F12 or Right click and select <strong>Inspect Page</strong>)</p>
     <div id="1" class="box red">Div1</div>
     <div id="bubble" class="box blue">Div2</div>
     <div class="box green round">Div3</div>
     <button >Click Me!</button>
+
+    
+    <hr>
+    <h3>Form 1</h3>
+    <form action="https://www.w3schools.com/action_page.php" method="GET">
+        <label>Name:</label>
+        <input type="text" name="full-name">
+        <label>Number of cats:</label>
+        <input type="number" name="cats">
+        <input type="reset"><input type="submit">
+    </form>
+    <h3>Form 2</h3>
+    <form id="form2" action="#" method="GET">
+        <label>Name:</label>
+        <input type="text" name="full-name">
+        <label>Number of cats:</label>
+        <input type="number" name="cats">
+        <input type="reset"><input type="submit">
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number of Cats</th>
+            </tr>
+        </thead>
+        <tbody id="name-cats-data">
+            <!-- <tr>
+                <td>Dummy</td>
+                <td>10</td>
+            </tr> -->
+            <!-- Use JS to append data here -->
+        </tbody>
+    </table>
+    <script>
+        // Use JavaScript to prevent the form from actually submitting
+        // Instead just add its contents here
+        document.getElementById('form2').addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // Get form data
+            const formData = new FormData(event.target); // target is the form element
+            const fullName = formData.get('full-name');
+            const numberOfCats = formData.get('cats');
+
+            // Create a new row and cells
+            const newRow = document.createElement('tr');
+            const nameCell = document.createElement('td');
+            const numberOfCatsCell = document.createElement('td');
+            
+            // Set the cell values
+            nameCell.textContent = fullName;
+            numberOfCatsCell.textContent = numberOfCats;
+
+            // Append the row to the table body
+            newRow.appendChild(nameCell);
+            newRow.appendChild(numberOfCatsCell);
+            document.getElementById("name-cats-data").appendChild(newRow);
+
+            // reset the form
+            event.target.reset();
+        })
+    </script>
 </body>
 </html>

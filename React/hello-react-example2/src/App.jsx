@@ -2,10 +2,12 @@
 // import rlogo from './assets/react.svg'
 // import vlogo from '/vite.svg' // note no ./ for public folder contents
 import './App.css'
-import Counter from './components/Counter'
+import Component1 from './components/Component1'
+import Conditional from './components/Conditional'
 // import Peekaboo from './components/Peekaboo'
 
 function App() {
+
 
   return (
     <>
@@ -13,7 +15,10 @@ function App() {
       {/* <Peekaboo /> */}
 
       {/** Example2 */}
-      <Counter />
+      {/* <Component1 /> */}
+
+      {/** Example3 */}
+      <Conditional />
     </>
   )
 }

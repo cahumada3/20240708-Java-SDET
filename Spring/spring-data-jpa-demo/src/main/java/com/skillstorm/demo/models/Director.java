@@ -45,7 +45,7 @@ public class Director {
 
      */
     @OneToMany(mappedBy = "director", targetEntity = Movie.class) // targetEntity is optional because Spring Data implies this from field list type
-    @JsonBackReference
+    @JsonBackReference // prevents from being serialzed
     List<Movie> movies;
  
     public Director(){}

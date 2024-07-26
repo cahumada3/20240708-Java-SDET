@@ -22,10 +22,15 @@ JpaRepository - extends PagingAndSortingRepository with more functionality like 
 public interface MovieRepository  extends JpaRepository<Movie, Integer>{
 
 
+    // NOTE custom queries that are update delete or insert instead of SELECT 
+    //  must be annotated with 
+    //  @Modifying
     @Query(value = "select m from Movie m ORDER BY rating LIMIT 3", nativeQuery = false)
     List<Movie> findTop3();
 
     List<Movie> findByDirector(Director director);
+
+
 
 
 }

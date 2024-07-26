@@ -5,17 +5,24 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.skillstorm.demo.models.Director;
 import com.skillstorm.demo.models.Movie;
+import com.skillstorm.demo.repositories.DirectorRepository;
 import com.skillstorm.demo.repositories.MovieRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class MovieService {
 
     private MovieRepository repo;
 
+    private DirectorRepository directorRepo;
+
     // use dependency injection to get an instance of the MovieRepository
-    public MovieService(MovieRepository repo) {
+    public MovieService(MovieRepository repo, DirectorRepository directorRepo) {
         this.repo = repo;
+        this.directorRepo = directorRepo;
     }
 
     public Iterable<Movie> findAll() {
@@ -26,8 +33,18 @@ public class MovieService {
         return repo.findById(id);
     }
 
-    // 
+    // TODO 1 Transaction
+    @Transactional
     public Movie save(Movie movie) {
+        // Assume, movie != null and director != null due to @Valid
+        // Check if director exists
+        Director director = movie.getDirector();
+        if (directorRepo.existsById(director.getId())) {
+            director = directorRepo.findById(director.getId()).get();
+            movie.setDirector(director);
+        }
+        // else 
+        // cascade creation (configured already by @Cascade(CasecadeType.PERSIST))
         return repo.save(movie); // TODO add more logic
     }
 

@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.demo.models.Director;
 import com.skillstorm.demo.repositories.DirectorRepository;
+
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +29,11 @@ public class DirectorController {
     }
     
 
+    @GetMapping()
+    public List<Director> findAll() {
+        return repo.findAll();
+    }
+    
 
 
 }

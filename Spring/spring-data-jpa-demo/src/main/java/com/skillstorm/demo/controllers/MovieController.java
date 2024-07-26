@@ -39,10 +39,10 @@ public class MovieController {
         this.service = service;
     }
 
-    @GetMapping("/hello")
-    public String helloWorld() {
-        return "Hello";
-    }
+    // @GetMapping("/hello")
+    // public String helloWorld() {
+    //     return "Hello";
+    // }
 
     @GetMapping
     public Iterable<Movie> findAll() {
@@ -74,7 +74,7 @@ public class MovieController {
     @DeleteMapping("/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable int id) {
-
+        service.deleteById(id);
     }
 
 }
