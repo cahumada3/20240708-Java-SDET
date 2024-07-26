@@ -34,15 +34,24 @@ public class MovieService {
     }
 
     // TODO 1 Transaction
-    @Transactional
+    @Transactional // Rollback on RuntimeExceptions
     public Movie save(Movie movie) {
         // Assume, movie != null and director != null due to @Valid
         // Check if director exists
         Director director = movie.getDirector();
         if (directorRepo.existsById(director.getId())) {
-            director = directorRepo.findById(director.getId()).get();
-            movie.setDirector(director);
+            Director existingDirector = directorRepo.findById(director.getId()).get();
+            movie.setDirector(existingDirector); // THIS IS THE MAGIC CREATING THE FK ASSOCIATION
+        } else {
+            throw new RuntimeException("Cannot save movie because Director " + director + " does not exist"); // runtimeexception
         }
+        /*
+         * User user = movie.getUser();
+         * if (userRepo.existsById(user.getId())) {
+         *    User existingUser = userRepo.findById(user.getId()).get();
+         * }
+         * 
+         */
         // else 
         // cascade creation (configured already by @Cascade(CasecadeType.PERSIST))
         return repo.save(movie); // TODO add more logic
