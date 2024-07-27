@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Table } from '@trussworks/react-uswds';
 
-const MovieList = () => {
+const MovieList = (props) => {
 
     // TODO fetch data from backend and display in table
     // when the component is mounted
@@ -29,6 +29,7 @@ const MovieList = () => {
         <>
             {/** TODO toggle button between table view and card view */}
             <div>MovieList</div>
+            {props.children}
 
             <button>Toggle View</button>
 
