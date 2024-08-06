@@ -2,11 +2,28 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MyFirstScript",
+            "request": "launch",
+            "mainClass": "com.skillstorm.selenium_demo.MyFirstScript",
+            "projectName": "selenium-demo"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-SpringMvcApplication<spring-mvc>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "mainClass": "com.skillstorm.spring_mvc.SpringMvcApplication",
             "projectName": "spring-mvc",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringDataJpaDemoApplication<spring-data-jpa-demo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.skillstorm.demo.SpringDataJpaDemoApplication",
+            "projectName": "spring-data-jpa-demo",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
