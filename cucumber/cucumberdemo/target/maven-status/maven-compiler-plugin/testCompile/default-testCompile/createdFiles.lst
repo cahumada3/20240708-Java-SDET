@@ -1,0 +1,4 @@
+com\skillstorm\cucumber\RunCucumberTest.class
+com\skillstorm\selenium\LoginPage.class
+com\skillstorm\cucumber\LoginSteps.class
+com\skillstorm\selenium\MainPage.class

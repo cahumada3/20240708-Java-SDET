@@ -26,17 +26,26 @@ public class StepDefinitions {
      * @Given maps to the step in the feature file that describes the precondition
      * Makes "today is Sunday" into a concrete condition
      */
-    @Given("today is Sunday")
-    public void todayIsSunday() {
-        today = "Sunday";
-    }
+    // @Given("today is Sunday")
+    // public void todayIsSunday() {
+    //     today = "Sunday";
+    // }
 
     /**
      * Makes "today is Friday" into a concrete conditon
      */
-    @Given("today is Friday")
-    public void todayIsFriday() {
-        today = "Friday";
+    // @Given("today is Friday")
+    // public void todayIsFriday() {
+    //     today = "Friday";
+    // }
+
+
+    /**
+     * makes "today is {string}" into a concrete condition using the Scenario Outline
+     */
+    @Given("today is {string}")
+    public void todayIs(String today) {
+        this.today = today;
     }
 
     /**
