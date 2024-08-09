@@ -61,6 +61,11 @@ public class HelloSelenium {
 
     @AfterEach
     public void teardown() {
+        /**
+         * Ways to teardown browser:
+         *      quit() - used to close all the browser windows and terminate driver
+         *      close() - used to close current window 
+         */
         //driver.quit();
     }
 }

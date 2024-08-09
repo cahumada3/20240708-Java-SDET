@@ -30,9 +30,24 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
-		<!-- 
-		dependency for selenium
-		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		
+		<!-- Needed for TestNG annotations -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>7.10.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Needed to create TestNG reports -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>reportng</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+
+		
+		<!-- Needed for Selenium-->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
