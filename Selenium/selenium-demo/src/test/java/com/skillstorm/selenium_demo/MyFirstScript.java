@@ -65,27 +65,27 @@ public class MyFirstScript {
          *          select - only applies to select elements
          */
 
-        WebElement textbox = driver.findElement(By.name("my-text"));
-        WebElement checkBox = driver.findElement(By.id("my-check-2"));
-        WebElement submitBtn = driver.findElement(By.cssSelector("button"));
-        WebElement submitBtn2 = driver.findElement(By.tagName("a"));
-        WebElement checkRadio = driver.findElement(By.xpath("//input[@name='my-radio']"));
+         WebElement textbox = driver.findElement(By.name("my-text"));
+        // WebElement checkBox = driver.findElement(By.id("my-check-2"));
+         WebElement submitBtn = driver.findElement(By.cssSelector("button"));
+        // WebElement submitBtn2 = driver.findElement(By.tagName("a"));
+        // WebElement checkRadio = driver.findElement(By.xpath("//input[@name='my-radio']"));
 
-        textbox.sendKeys("This is my input!");
-        textbox.clear();
-        checkBox.click();
-        //submitBtn.submit();
-        //submitBtn2.click();
-        checkRadio.click();
+         textbox.sendKeys("This is my input!");
+        // textbox.clear();
+        // checkBox.click();
+        submitBtn.click();
+        // //submitBtn2.click();
+        // checkRadio.click();
 
-        WebElement selectElement = driver.findElement(By.name("my-select"));
-        Select select = new Select(selectElement);
-        //select.selectByVisibleText("Three");
-        select.selectByValue("3");
+        // WebElement selectElement = driver.findElement(By.name("my-select"));
+        // Select select = new Select(selectElement);
+        // //select.selectByVisibleText("Three");
+        // select.selectByValue("3");
 
-        System.out.println(textbox);
+        // System.out.println(textbox);
 
-        //quits the web app
+        // //quits the web app
         driver.quit();
     }
     

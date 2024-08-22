@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNGTest-69ce5600-776c-4dbb-ba06-ae0aa94c4364"
+           tests="3"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="4.008">
+    <properties></properties>
+
+
+
+            <testcase
+                name="verifyTitle"
+                time="0.639"
+                classname="com.skillstorm.selenium_demo.SeleniumTest">
+            </testcase>
+            <testcase
+                name="navigateToLogin"
+                time="2.023"
+                classname="com.skillstorm.selenium_demo.SeleniumTest">
+            </testcase>
+            <testcase
+                name="login"
+                time="1.346"
+                classname="com.skillstorm.selenium_demo.SeleniumTest">
+            </testcase>
+</testsuite>
