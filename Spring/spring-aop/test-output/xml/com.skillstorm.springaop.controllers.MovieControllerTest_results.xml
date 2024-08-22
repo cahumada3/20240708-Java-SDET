@@ -1,37 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestNGTest-218c6566-c956-4d8d-aecb-8ae625ef3adb"
-           tests="5"
+<testsuite name="TestNGTest-8c9ae8e1-dced-4f43-b18e-587b8cd0f4ff"
+           tests="1"
            failures="0"
            errors="0"
            skipped="0"
-           time="0.299">
+           time="0.668">
     <properties></properties>
 
 
 
             <testcase
                 name="findAllMoviesTest"
-                time="0.008"
-                classname="com.skillstorm.springaop.controllers.MovieControllerTest">
-            </testcase>
-            <testcase
-                name="deleteMovie"
-                time="0.004"
-                classname="com.skillstorm.springaop.controllers.MovieControllerTest">
-            </testcase>
-            <testcase
-                name="findMovieByIdTest"
-                time="0.003"
-                classname="com.skillstorm.springaop.controllers.MovieControllerTest">
-            </testcase>
-            <testcase
-                name="createMovieTest"
-                time="0.282"
-                classname="com.skillstorm.springaop.controllers.MovieControllerTest">
-            </testcase>
-            <testcase
-                name="updateMovieTest"
-                time="0.002"
+                time="0.668"
                 classname="com.skillstorm.springaop.controllers.MovieControllerTest">
             </testcase>
 </testsuite>
