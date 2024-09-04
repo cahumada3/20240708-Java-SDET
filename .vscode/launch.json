@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "AccountsServiceApplication",
+            "request": "launch",
+            "mainClass": "com.skilstorm.accounts_service.AccountsServiceApplication",
+            "projectName": "com.skilstorm-accounts-service"
+        },
+        {
+            "type": "java",
             "name": "MyFirstScript",
             "request": "launch",
             "mainClass": "com.skillstorm.selenium_demo.MyFirstScript",

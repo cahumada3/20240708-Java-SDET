@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestNGTest-9b12add7-0051-4518-8e42-0e590568156d"
+<testsuite name="TestNGTest-53bf61f3-808d-465d-9e72-bd61966d4777"
            tests="2"
            failures="0"
            errors="0"
            skipped="0"
-           time="0.948">
+           time="1.282">
     <properties></properties>
 
 
 
             <testcase
-                name="verifyGreeting"
-                time="0.070"
+                name="login"
+                time="1.229"
                 classname="com.skillstorm.selenium_demo.MyTestNG">
             </testcase>
             <testcase
-                name="login"
-                time="0.878"
+                name="verifyGreeting"
+                time="0.053"
                 classname="com.skillstorm.selenium_demo.MyTestNG">
             </testcase>
 </testsuite>

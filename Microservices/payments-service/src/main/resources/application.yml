@@ -1,0 +1,17 @@
+# make sure we confgure port
+server:
+    port: 8082
+
+# name application
+spring:
+    application:
+        name: payments-service
+
+# configure where the discovery client is so our app can auto register itself
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:8761/eureka
+
+    instance:
+        leaseRenewalIntervalInSeconds: 30

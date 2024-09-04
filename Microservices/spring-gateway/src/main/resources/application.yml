@@ -1,0 +1,35 @@
+server:
+    port: 8125      # standard port for api gateway
+
+# set up the eureka client for service discovery
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:8761/eureka   # location of eureka server
+
+# configure the api gateway
+spring:
+    cloud:
+        gateway:
+            # setting up global cors handling
+            cors-configurations:
+                '[/**]':                                    # applying cors configuration to all routes
+                    allowedOrigins: http://localhost:5173   # the place(s) that are allowed to send requests to the gateway
+                    allowedMethods:                         # list of all allowed HTTP methods
+                        - GET
+                        - POST
+                        - PUT
+                        - DELETE
+
+            routes:
+                - id: accounts-service
+                  uri: lb://accounts-service        # this can be any path - here we're using spring's own load balancer to mange traffic to accounts-service
+                  predicates:
+                    - Path=/accounts/**             # this path will map to this specific service
+                  filters:
+                    - name: CircuitBreaker          # needs to be exactly this - references the CircuitBreaker class from Resilience4J
+                      args:
+                        name: fallbackController    # needs to be in the format of a bean 
+                        fallbackUri: forward:/cache/accounts
+            
+

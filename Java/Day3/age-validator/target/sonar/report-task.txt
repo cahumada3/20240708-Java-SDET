@@ -1,0 +1,6 @@
+projectKey=age-validator
+serverUrl=http://localhost:9000
+serverVersion=10.6.0.92116
+dashboardUrl=http://localhost:9000/dashboard?id=age-validator
+ceTaskId=11698b54-4e2d-4936-83cf-9a8de09d3117
+ceTaskUrl=http://localhost:9000/api/ce/task?id=11698b54-4e2d-4936-83cf-9a8de09d3117

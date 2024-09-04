@@ -7,7 +7,7 @@ const MovieList = () => {
     // TODO fetch data from backend and display in table
     // when the component is mounted
 
-    const url = "http://localhost:8080/movies";
+    const url = "http://localhost:8282/movies";
 
     const [movies, setMovies] = useState([]);
     const [loaded, setLoaded] = useState(false);

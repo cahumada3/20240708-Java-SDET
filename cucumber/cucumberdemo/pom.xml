@@ -63,6 +63,20 @@
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- needed for JaCoCo -->
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.12</version>
+        </dependency>
+
+        <!-- needed for SonarScanner Maven -->
+        <dependency>
+            <groupId>org.sonarsource.scanner.maven</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>4.0.0.4121</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -82,6 +96,24 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M8</version>
             </plugin>
+            <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.12</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>prepare-agent</goal>
+                <goal>report</goal>
+              </goals>
+            </execution>
+          </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.sonarsource.scanner.maven</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>4.0.0.4121</version>
+          </plugin>
         </plugins>
     </build>
 </project>
