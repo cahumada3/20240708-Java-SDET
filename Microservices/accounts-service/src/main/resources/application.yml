@@ -2,18 +2,18 @@
 server:
     port: 8081
 
-# nameing the application
+# naming application
 spring:
     application:
-        name: accounts-service  # used as the id in the gateway routes
+        name: accounts-service          # used as the id in the gateway routes
 
-# configure where the discovery client is so our app can auto register itself
+# configure where the discovery client is so our app can auto-register itself
 eureka:
     client:
         service-url:
             defaultZone: http://localhost:8761/eureka
 
-    # configuring how long between each heatbeat request
+    # configuring how long between each "heartbeat" request
     instance:
         leaseRenewalIntervalInSeconds: 30
 

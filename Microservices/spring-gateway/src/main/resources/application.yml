@@ -1,35 +1,53 @@
 server:
-    port: 8125      # standard port for api gateway
+    port: 8125          # standard port for api gateway
 
-# set up the eureka client for service discovery
+
+# setup the eureka client for service discovery
 eureka:
     client:
         service-url:
-            defaultZone: http://localhost:8761/eureka   # location of eureka server
+            # you can do a lot with zones - like geographical regions
+            defaultZone: http://localhost:8761/eureka       # location of eureka server
 
-# configure the api gateway
+# configuring the gateway
 spring:
     cloud:
         gateway:
-            # setting up global cors handling
+            # setting up global CORS handling
             cors-configurations:
                 '[/**]':                                    # applying cors configuration to all routes
-                    allowedOrigins: http://localhost:5173   # the place(s) that are allowed to send requests to the gateway
-                    allowedMethods:                         # list of all allowed HTTP methods
-                        - GET
+                    allowedOrigins: http://localhost:5173   # the places that are allowed to send requests to the gateway - 5173 for react
+                    allowedMethods:                         # list of allowed HTTP methods
+                        - GET                               # yml list syntax
                         - POST
                         - PUT
                         - DELETE
-
+            
+            # defining where to route traffic to from the gateway
             routes:
-                - id: accounts-service
-                  uri: lb://accounts-service        # this can be any path - here we're using spring's own load balancer to mange traffic to accounts-service
-                  predicates:
-                    - Path=/accounts/**             # this path will map to this specific service
+                # each service is going to need its own route configuration
+                - id: accounts-service                      # needs to match the spring.application.name in the services
+                  uri: lb://accounts-service                # this can be any path - we'll use spring's own load balancer to manage traffic to accounts-service
+                  predicates:                               
+                    - Path=/accounts/**                     # this path will map to this specific service
                   filters:
-                    - name: CircuitBreaker          # needs to be exactly this - references the CircuitBreaker class from Resilience4J
+                    - name: CircuitBreaker                  # needs to be this exactly - it is referenceing the CircuitBreaker class from Resilience4J
                       args:
-                        name: fallbackController    # needs to be in the format of a bean 
-                        fallbackUri: forward:/cache/accounts
+                        name: fallbackController            # needs to be in the format of a bean 
+
+                        # this fallback URI can be anywhere - another service entirely or stay on the gateway (done below)
+                        # - with redirect - the server tells the browser "hey need to go somewhere" and the browser will redirect
+                        # - with forward - the server is going to just send you somewhere else
+                        fallbackUri: forward:/cache/accounts    # forwarding the request to a different endpoint
+
+                - id: payments-service                      # needs to match the spring.application.name in the services
+                  uri: lb://payments-service                # use spring's own load balancer to manage traffic to payments-service
+                  predicates:
+                    - Path=/payments/**                     # this path will map to this specific service
+
+                - id: rabbitmq-publisher                    # needs to match the spring.application.name in the services
+                  uri: lb://rabbitmq-publisher              # use spring's own load balancer to manage traffic to rabbitmq-publisher
+                  predicates:
+                    - Path=/publisher/**                    # this path will map to this specific service
             
 

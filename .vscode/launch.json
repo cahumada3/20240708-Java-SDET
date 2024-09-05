@@ -43,6 +43,38 @@
             "projectName": "spring-aop",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringEurekaServerApplication<com.skillstorm-spring-eureka-server>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.skillstorm.spring_eureka_server.SpringEurekaServerApplication",
+            "projectName": "com.skillstorm-spring-eureka-server",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=56273 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=com.skillstorm-spring-eureka-server"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringGatewayApplication<com.skillstorm-spring-gateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.skillstorm.spring_gateway.SpringGatewayApplication",
+            "projectName": "com.skillstorm-spring-gateway",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=56295 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=com.skillstorm-spring-gateway"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-PaymentsServiceApplication<com.skillstorm-payments-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.skillstorm.payments_service.PaymentsServiceApplication",
+            "projectName": "com.skillstorm-payments-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
